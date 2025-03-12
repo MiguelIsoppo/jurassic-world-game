@@ -54,8 +54,7 @@ Um jogo de sobrevivência em 3D inspirado em Jurassic World, desenvolvido com Th
 - Terreno gerado proceduralmente
 - Física básica
 - Sistema de coleta de recursos
-- Interface inspirada em ARK: Survival Evolved
-
+  
 ## 🎮 Como Executar Localmente
 
 1. Clone este repositório
