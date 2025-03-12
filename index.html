@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurassic World Game 1</title>
+    <style>
+        body { 
+            margin: 0; 
+            overflow: hidden; 
+            font-family: 'Arial', sans-serif;
+            background: #000;
+        }
+        canvas { 
+            display: block; 
+        }
+        #ui {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            color: white;
+            text-shadow: 2px 2px black;
+            z-index: 100;
+        }
+        .bar {
+            width: 200px;
+            height: 20px;
+            background: rgba(0,0,0,0.7);
+            margin: 5px 0;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        #health-bar {
+            background: linear-gradient(to right, #ff0000, #ff3333);
+            height: 100%;
+            width: 100%;
+            transition: width 0.3s;
+        }
+        #stamina-bar {
+            background: linear-gradient(to right, #ffff00, #ffff33);
+            height: 100%;
+            width: 100%;
+            transition: width 0.3s;
+        }
+        #hunger-bar {
+            background: linear-gradient(to right, #ff8c00, #ffa500);
+            height: 100%;
+            width: 100%;
+            transition: width 0.3s;
+        }
+        #thirst-bar {
+            background: linear-gradient(to right, #0000ff, #3333ff);
+            height: 100%;
+            width: 100%;
+            transition: width 0.3s;
+        }
+        #crosshair {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            pointer-events: none;
+            text-shadow: 2px 2px black;
+        }
+        #controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        #inventory {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        #hotbar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .hotbar-slot {
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .hotbar-slot.selected {
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255,215,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <div class="bar"><div id="health-bar"></div></div>
+        <div class="bar"><div id="stamina-bar"></div></div>
+        <div class="bar"><div id="hunger-bar"></div></div>
+        <div class="bar"><div id="thirst-bar"></div></div>
+    </div>
+    
+    <div id="inventory">
+        Inventário<br>
+        Madeira: <span id="wood-count">0</span>
+    </div>
+    
+    <div id="crosshair">+</div>
+    
+    <div id="controls">
+        WASD: Mover | ESPAÇO: Pular | E: Montar/Desmontar | Mouse: Olhar | 1-5: Selecionar Item | Destrua todas as árvores com o Raptor para desbloquear o T-Rex!
+    </div>
+
+    <div id="hotbar">
+        <div class="hotbar-slot selected">Mãos</div>
+        <div class="hotbar-slot">Machado</div>
+        <div class="hotbar-slot">Machado+</div>
+        <div class="hotbar-slot">Raptor</div>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r159/three.min.js"></script>
+    
+    <!-- Seu jogo -->
+    <script src="game.js"></script>
+</body>
+</html> 
